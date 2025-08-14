@@ -1,0 +1,67 @@
+# Ruff configuration file
+# See: https://docs.astral.sh/ruff/configuration/
+
+# Global line length setting
+line-length = 88
+
+# Target Python 3.12+
+target-version = "py312"
+
+[lint]
+# Enable the following rule sets
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "PIE", # flake8-pie
+    "SIM", # flake8-simplify
+]
+
+# Ignore the following rules
+ignore = [
+    "E501",   # Line too long (handled by formatter)
+    "B008",   # Do not perform function calls in argument defaults
+    "N806",   # Variable in function should be lowercase (allows for ML/AI variable names)
+    "UP007",  # Use X | Y for type annotations (Python 3.10+ syntax)
+    "SIM117", # Single with statement only in tests shouldn't matter
+]
+
+# Exclude certain directories and files
+exclude = [
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    ".venv",
+    "venv",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+[lint.per-file-ignores]
+# Test files can have longer lines and different naming conventions
+"tests/**/*.py" = ["E501", "N802", "N803"]
+
+[lint.isort]
+# Configure import sorting
+known-first-party = ["agent", "enhanced_sage_agent", "main"]
+force-single-line = false
+lines-after-imports = 2
+
+[format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Use spaces for indentation
+indent-style = "space"
+
+# Skip string normalization to avoid conflicts with black-style formatting
+skip-magic-trailing-comma = false
+
+# Line ending style
+line-ending = "auto"

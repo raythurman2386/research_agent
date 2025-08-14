@@ -1,0 +1,42 @@
+[project]
+name = "research-agent"
+version = "0.1.0"
+description = "**S**elf-**A**daptive, **G**oal-**O**riented AI Research Agent for comprehensive research automation and intelligent report generation."
+author = "Ray Thurman"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "google-generativeai>=0.8.5",
+    "matplotlib>=3.10.5",
+    "mypy>=1.8.0",
+    "pandas>=2.3.1",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.4",
+    "ruff>=0.12.9",
+    "seaborn>=0.13.2",
+    "tavily-python>=0.7.10",
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+research-agent = "main:main"
+quality-check = "scripts.quality_check:main"
+
+[project.urls]
+"Homepage" = "https://github.com/raythurman2386/research-agent"
+"Bug Reports" = "https://github.com/raythurman2386/research-agent/issues"
+"Source" = "https://github.com/raythurman2386/research-agent"
+"Documentation" = "https://github.com/raythurman2386/research-agent#readme"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent.py", "enhanced_sage_agent.py", "main.py"]
